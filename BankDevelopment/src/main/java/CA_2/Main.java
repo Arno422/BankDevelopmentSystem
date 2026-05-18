@@ -7,10 +7,6 @@ package CA_2;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-/**
- *
- * @author aramn
- */
 public class Main {
 
     public static void main(String[] args) {
@@ -19,8 +15,7 @@ public class Main {
         Scanner input = new Scanner(System.in);
 
         // Read employee data from file
-        ArrayList<Employee> employees =
-                FileManager.readFile("App.txt");
+        ArrayList<Employee> employees = Filemanager.readFile("App.txt");
 
         // Success message
         System.out.println(
@@ -51,10 +46,7 @@ public class Main {
                 case 1:
 
                     // Calls merge sort
-                    MergeSort.mergeSort(
-                            employees,
-                            0,
-                            employees.size() - 1);
+                    MergeSort.mergeSort(employees,0, employees.size() - 1);
 
                     System.out.println(
                             "Sorted Successfully!");
@@ -77,11 +69,7 @@ public class Main {
 
                     // Perform binary search
                     int result =
-                            BinarySearch.search(
-                                    employees,
-                                    name,
-                                    0,
-                                    employees.size() - 1);
+                            BinarySearch.search(employees, name, 0, employees.size() - 1);
 
                     // Employee not found
                     if (result == -1) {
@@ -109,17 +97,30 @@ public class Main {
                     }
 
                     break;
-            }
-        }
-    }
-
-    private static class FileManager {
-
-        private static ArrayList<Employee> readFile(String apptxt) {
-            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-        }
-
-        public FileManager() {
-        }
-    }
-}
+                 
+                 //Create tree
+                case 4: 
+                    
+                    //create binary tree object
+                    EmployeeBinaryTree tree = new EmployeeBinaryTree();
+                    
+                    //Insert employees into tree
+                    for (Employee employee : employees){
+                        tree.insert(employee);
+                    }
+                    //display 
+                    tree.displayTree();
+                    //display node count
+                    System.out.println("nTotal Nodes: "+ tree.countNodes(tree.root));
+                    
+                    //display tree height
+                    System.out.println("Tree height " + tree.getHeight(tree.root));
+                    break;
+                 //Add record 
+                case 5:
+                    //clear scanner  buffer
+                    input.nextLine();
+                    //Info fill out First name, last name ...
+                    System.out.println("Enter first name ");
+                    }
+            }}}}
