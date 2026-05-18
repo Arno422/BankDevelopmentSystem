@@ -122,5 +122,42 @@ public class Main {
                     input.nextLine();
                     //Info fill out First name, last name ...
                     System.out.println("Enter first name ");
-                    }
-            }}}}
+                    String firstName = input.nextLine();
+                    System.out.println("Enter last name:");
+                    String lastName = input.nextLine();
+                    System.out.println("Enter gender:");
+                    String gender = input.nextLine();
+                    System.out.println("Enter email:");
+                    String email = input.nextLine();
+                    System.out.println("Enter salary:");
+                      double salary = input.nextDouble();
+                    // Clear scanner
+                    input.nextLine();
+                    //Department info
+                    System.out.println("Enter department:");
+                    String depName = input.nextLine();
+                    System.out.println("Enter manager type:");
+                    String managerType = input.nextLine();
+                    System.out.println("Enter company:");
+                    String company = input.nextLine();
+                 // Create department object
+               Department department =new Department(depName);
+
+                // Create manager object
+               Manager manager = new Manager(managerType);
+
+                // Create employee object
+               Employee newEmployee = new Employee(firstName,lastName,gender,email,salary, department, manager, company);
+
+    // Add employee into list
+    employees.add(newEmployee);
+
+    // Success message
+    System.out.println(
+            "Employee added successfully!");
+
+    break;
+              }
+            }
+    }
+}
