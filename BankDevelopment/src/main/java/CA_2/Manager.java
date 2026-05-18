@@ -9,13 +9,17 @@ package CA_2;
  * @author aramn
  */
 public class Manager {
-
+//Stored managers Head,team and leader etc
     private String managerType;
-
+//Create manager  Object
+    
     public Manager(String managerType) {
+        //this-current object
+        //stores parameret value inside object
         this.managerType = managerType;
     }
-
+    
+// returns manager type
     public String getManagerType() {
         return managerType;
     }
