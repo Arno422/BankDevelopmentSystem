@@ -45,11 +45,14 @@ public class Main {
                 // SORT
                 case 1:
 
-                    // Calls merge sort
-                    MergeSort.mergeSort(employees,0, employees.size() - 1);
+                   
+                    //Show 20 employees
+                   int limit = Math.min(20, employees.size());
 
-                    System.out.println(
-                            "Sorted Successfully!");
+                    // Print first 20 employees
+                      for (int i = 0; i < limit; i++) {
+                System.out.println(employees.get(i));
+                }
 
                     break;
 
