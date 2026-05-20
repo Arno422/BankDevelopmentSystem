@@ -16,8 +16,7 @@ public class EmployeeBinaryTree {
     public void insert(Employee employee) {
 
         // Create new node
-        TreeNode newNode =
-                new TreeNode(employee);
+        TreeNode newNode = new TreeNode(employee);
 
         // If tree is empty
         if (root == null) {
@@ -67,34 +66,114 @@ public class EmployeeBinaryTree {
                 queue.add(current.right);
             }
         }
+}
+  // Display tree level by level
+public void displayTree() {
+
+    // Check if tree empty
+    if (root == null) {
+
+        System.out.println(
+                "Tree is empty");
+
+        return;
     }
-// Display tree using level-order traversal
-    public void displayTree() {
-        printTree(root, 0);
+
+    // Queue for traversal
+    Queue<TreeNode> queue =
+            new LinkedList<>();
+
+    // Add root
+    queue.add(root);
+
+    // Start level count
+    int level = 1;
+
+    // Continue until queue empty
+    while (!queue.isEmpty()) {
+
+        // Nodes in current level
+        int size = queue.size();
+
+        System.out.println(
+                "\nLevel " + level + ":");
+
+        // Print all nodes in current level
+        for (int i = 0; i < size; i++) {
+
+            // Remove current node
+            TreeNode current =
+                    queue.poll();
+
+            // Employee object
+            Employee emp =
+                    current.employee;
+
+            // Print employee info
+            System.out.printf(
+                    "%-20s | %-15s | %-20s%n",
+
+                    emp.getFirstName()
+                    + " "
+                    + emp.getLastName(),
+
+                    emp.getManager()
+                            .getManagerType(),
+
+                    emp.getDepartment()
+                            .getDepartmentName()
+            );
+
+            // Add left child
+            if (current.left != null) {
+
+                queue.add(current.left);
+            }
+
+            // Add right child
+            if (current.right != null) {
+
+                queue.add(current.right);
+            }
+        }
+
+        // Next level
+        level++;
     }
-    //rescutsive tree display
-    private void printTree(TreeNode node, int level){
-        // Check if tree empty
-        if (root == null) {
+}
+    public int countNodes(TreeNode root) {
 
-            System.out.println("Tree is empty");
+    // Empty node
+    if (root == null) {
+        return 0;
+    }
 
-            return;
-        }
-        //print right side 
-        printTree(node.right, level +1);
-        
-        //Spaces for tree shape
-        for (int i=0; i < level; i++) {
-            System.out.println("         ");
-        }
-         // Print employee name
-            System.out.println(node.employee.getFirstName()+ " - " + node.employee.getManager().getManagerType());
+    // Count current + left + right
+    return 1
+            + countNodes(root.left)
+            + countNodes(root.right);
+}
+public int getHeight(TreeNode root) {
 
-    // Print left side
-    printTree(node.left, level + 1);
+    // Empty tree
+    if (root == null) {
+        return 0;
+    }
+
+    // Left height
+    int leftHeight =
+            getHeight(root.left);
+
+    // Right height
+    int rightHeight =
+            getHeight(root.right);
+
+    // Return bigger height + 1
+    return Math.max(
+            leftHeight,
+            rightHeight) + 1;
 }
 }
-        // Queue for traversal
+      
         
  
