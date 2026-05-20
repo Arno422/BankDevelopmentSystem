@@ -44,7 +44,9 @@ public class Main {
 
                 // SORT
                 case 1:
-
+                    // Mergesort employee
+                MergeSort.mergeSort(employees, 0, employees.size() -1);
+                    System.out.println("Employees Sorted Successfully");
                    
                     //Show 20 employees
                    int limit = Math.min(20, employees.size());
