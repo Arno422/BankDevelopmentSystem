@@ -70,7 +70,10 @@ public class EmployeeBinaryTree {
     }
 // Display tree using level-order traversal
     public void displayTree() {
-
+        printTree(root, 0);
+    }
+    //rescutsive tree display
+    private void printTree(TreeNode node, int level){
         // Check if tree empty
         if (root == null) {
 
@@ -78,76 +81,20 @@ public class EmployeeBinaryTree {
 
             return;
         }
-        // Queue for traversal
-        Queue<TreeNode> queue =
-                new LinkedList<>();
-
-        // Add root
-        queue.add(root);
-
-        System.out.println("\nEMPLOYEE HIERARCHY:");
-         // Traverse tree
-        while (!queue.isEmpty()) {
-
-            // Remove current node
-            TreeNode current =
-                    queue.poll();
-
-            // Print employee
-            System.out.println(
-                    current.employee);
-
-            // Add left child
-            if (current.left != null) {
-
-                queue.add(current.left);
-            }
-
-            // Add right child
-            if (current.right != null) {
-
-                queue.add(current.right);
-            }
+        //print right side 
+        printTree(node.right, level +1);
+        
+        //Spaces for tree shape
+        for (int i=0; i < level; i++) {
+            System.out.println("         ");
         }
-    }
+         // Print employee name
+            System.out.println(node.employee.getFirstName()+ " - " + node.employee.getManager().getManagerType());
 
-    // Count total nodes
-    public int countNodes(TreeNode node) {
-
-        // Base case
-        if (node == null) {
-
-            return 0;
-        }
-
-        // Count recursively
-        return 1
-                + countNodes(node.left)
-                + countNodes(node.right);
-    }
-
-    // Calculate tree height
-    public int getHeight(TreeNode node) {
-
-        // Base case
-        if (node == null) {
-
-            return 0;
-        }
-
-        // Left subtree height
-        int leftHeight =
-                getHeight(node.left);
-
-        // Right subtree height
-        int rightHeight =
-                getHeight(node.right);
-
-        // Return larger height
-        return Math.max(
-                leftHeight,
-                rightHeight) + 1;
-    }
+    // Print left side
+    printTree(node.left, level + 1);
 }
-
+}
+        // Queue for traversal
+        
  
