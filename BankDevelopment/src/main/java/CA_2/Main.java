@@ -29,7 +29,7 @@ public class Main {
         while (choice != 6) {
 
             // Display menu
-            System.out.println("\n1. SORT");
+            System.out.println("1. SORT");
             System.out.println("2. SEARCH");
             System.out.println("3. DISPLAY ALL");
             System.out.println("4. CREATE TREE");
@@ -40,10 +40,19 @@ public class Main {
             choice = input.nextInt();
 
             // Menu selection
-            switch (choice) {
+            //enum
+            MenuOption option = MenuOption.fromInt(choice);
+            if(option == null) {
+
+    System.out.println(
+            "Invalid choice");
+
+    continue;
+}
+            switch (option) {
 
                 // SORT
-                case 1:
+                case SORT:
                     // Mergesort employee
                 MergeSort.mergeSort(employees, 0, employees.size() -1);
                     System.out.println("Employees Sorted Successfully");
@@ -59,7 +68,7 @@ public class Main {
                     break;
 
                 // SEARCH
-                case 2:
+                case SEARCH:
 
                     // Clears scanner buffer
                     input.nextLine();
@@ -92,7 +101,7 @@ public class Main {
                     break;
 
                 // DISPLAY ALL
-                case 3:
+                case DISPLAY_ALL:
 
                     // Loop through all employees
                     for (Employee employee : employees) {
@@ -104,7 +113,7 @@ public class Main {
                     break;
                  
                  //Create tree
-                case 4: 
+                case CREATE_TREE: 
                     
                     //create binary tree object
                     EmployeeBinaryTree tree = new EmployeeBinaryTree();
@@ -122,7 +131,7 @@ public class Main {
                     System.out.println("Tree height " + tree.getHeight(tree.root));
                     break;
                  //Add record 
-                case 5:
+                case ADD_RECORD:
                     //clear scanner  buffer
                     input.nextLine();
                     //Info fill out First name, last name ...
